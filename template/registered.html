@@ -1,0 +1,61 @@
+{% extends 'headerfooter.html' %}
+{% block content %}
+		
+<!-- //navigation -->
+<!-- breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+				<li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">signup Page</li>
+			</ol>
+		</div>
+	</div>
+<!-- //breadcrumbs -->
+<!-- register -->
+<h4 style="color: red;text-align: center;">{{error}}</h4>
+	<div class="register">
+		<div class="container">
+			<h2>Register Here</h2>
+			<div class="login-form-grids">
+				<h5>profile information</h5>
+				<form action="/signup/" method="post">
+					{% csrf_token %}
+					<input type="text" placeholder="Full Name..." name="Name" required=" " >
+					
+				<!-- </form>
+				<div class="register-check-box">
+					<div class="check">
+						<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Subscribe to Newsletter</label>
+					</div>
+				</div>
+				<h6>Login information</h6>
+					<form action="/signup/" method="post"> -->
+					<input type="email" placeholder="Email Address" name="Email"required=" " style="margin: 1em 0;">
+					<input type="password" placeholder="Password"  name="Password" id="password1" required=" ">
+					<input type="password" placeholder="Password Confirmation" name="ConfirmPassword" id="password2" required=" " >
+					<div class="register-check-box">
+						<div>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
+						</div>
+					</div>
+					<input type="submit" value="Signup">
+				</form>
+			</div>
+			<div class="register-home">
+				<a href="/">Home</a>
+			</div>
+		</div>
+	</div>
+<!-- //register -->
+{% endblock %}
+
+
+
+
+<div>
+                                        <input type="checkbox"> 
+                                    <!-- </label> -->
+
+                                    <label for="check">Check me out</label>
+                                </div>

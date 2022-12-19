@@ -1,0 +1,156 @@
+{% extends 'admin/headerfooter.html' %}
+{% block content %}
+
+
+<div id="page-wrapper">
+    <div class="graphs">
+	    <div class="xs">
+	    	 {% for x in details %}
+	     	<form action="/myadmin/basic_update/?pid={{x.id}}" method="post" enctype="multipart/form-data">
+	     	{% csrf_token %}
+  	        <h3>Forms</h3>
+
+  	        <h4 style="color: red;text-align: center;">{{error}}</h4>
+
+  	            <div class="tab-content">
+						<div class="tab-pane active" id="horizontal-form">
+
+             <div class="panel-body">
+            <div class="form-group">	
+							<div class="col-md-8">
+								<div class="input-group">							
+									<span class="input-group-addon">
+										<i class="fa fa-envelope-o"></i>
+									</span>
+									<input type="text" class="form-control1" name="Name" placeholder="Product Name"  value="{{x.name}}">
+								</div>
+							</div>
+						</div>
+
+
+						<div class="form-group">	
+							<div class="col-md-8">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-inr" style="width: 14px; height: 14px;"></i>
+									</span>
+									<input type="text" class="form-control1" id="Price" name="Price"  placeholder="Price"  value="{{x.price}}">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">	
+							<div class="col-md-8">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-inr" style="width: 14px; height: 14px;"></i>
+									</span>
+									<input type="text" class="form-control1" id="OffPrice" name="Offprice"  placeholder="Offprice">
+								</div>
+							</div>
+						</div> 
+
+
+				<div class="form-group">	
+							<div class="col-md-8">
+								<div class="input-group input-icon right">
+									<span class="input-group-addon">
+										<i class="fa fa-envelope-o" style="width: 14px; height: 14px;"></i>
+									</span>
+									<input id="email" class="form-control1" type="text" name="Details" placeholder="Details"  value="{{x.details}}">
+								</div>
+							</div>	
+						</div>
+
+
+						<div class="form-group">
+							<div class="col-md-8">
+								<div class="input-group input-icon right">
+									<span class="input-group-addon">
+										<i class="fa fa-bars" style="width: 14px; height: 14px;"></i>
+									</span>
+									<!-- <input type="password" class="form-control1" name="Category" placeholder="Category"> -->
+									<select id="CATEGORY" class="form-control" name="Catagory"  >
+  										<option value="{{x.catagory}}" selected>{{x.catagory}}</option>
+
+  										<!-- <option value="Groceries">Groceries</option> -->
+  										<option value="household">household</option>
+  										<option value="Personal Care">Personal Care</option>
+  										<option value="Packaged Food">Packaged Food</option>
+  										<option value="beverages">beverages</option>
+
+									</select>
+								</div>
+							</div>	
+						</div>
+
+
+
+						<div class="form-group">
+							<div class="col-md-8">
+								<div class="input-group input-icon right">
+									<span class="input-group-addon">
+										<i class="fa fa-bars" style="width: 14px; height: 14px;"></i>
+									</span>
+                                    <label for="FILE">Product Image</label>
+                                   <!--  <input type="file" class="form-control" id="FILE" name="Proimage" placeholder="Proimage"> -->
+                                     <img src="{{x.proimage.url}}">
+                                 </div>
+                             </div>
+                         </div>
+
+
+                         <div class="form-group">
+                         	<div class="col-md-8">
+								<div class="input-group input-icon right">
+									<span class="input-group-addon">
+										<i class="fa fa-bars" style="width: 14px; height: 14px;"></i>
+									</span>
+                                    <label for="up">Do you want update image</label>
+                                    <input type="radio"  id="imgup" name="imgup" onchange="hide();" value="yes">Yes
+                                    <input type="radio"  id="imgup1" name="imgup" onchange="hide();" checked="" value="no">No   
+                                 </div>
+
+                        <div class="form-group" style="display: none;" id="proup">
+                                    <label for="FILE">Update Image</label>
+                                    <input type="file" class="form-control" id="FILE" name="Proimage" placeholder="Proimage" >     
+                                 </div>
+
+
+                        <div class="text-right">
+                                    <button type="submit" class="btn btn-primary btn-style mt-4">Update</button>  
+                                 </div>
+
+
+                         
+						<!-- <div class="form-group has-error">
+							<div class="col-md-8">
+							<button value="login">Login</button>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</form>
+		{% endfor %}
+
+
+
+	    </div>
+    </div>
+</div>
+<script type="text/javascript">
+        function hide(){
+        var chkYes = document.getElementById("imgup");
+        var divproup = document.getElementById("proup");
+        divproup.style.display = chkYes.checked ? "block" : "none";
+        if (chkYes.checked){
+            var img = document.getElementById("FILE").required = true;
+        }
+        else{
+            var img = document.getElementById("FILE").required = false;
+        }
+    }
+</script>
+
+  {% endblock %}

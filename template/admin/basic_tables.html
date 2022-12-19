@@ -1,0 +1,43 @@
+{% extends 'admin/headerfooter.html' %}
+{% block content %}
+<div id="page-wrapper">
+  <div class="col-md-12 graphs">
+	 <div class="xs">
+  	 <h3 style="text-align: center;">Basic Tables</h3>
+  	<div class="bs-example4" data-example-id="contextual-table">
+    <table class="table">
+      <thead>
+        <tr>
+           <th data-breakpoints="xs">ID</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Off Price</th>          
+            <th >Details</th>
+            <th>catagory</th>
+            <th>Product Image</th>     
+        </tr>
+      </thead>
+      <tbody>
+        {% for x in prd %}
+        <tr class="active">
+          <td>{{forloop.counter}}</td>
+          <td>{{x.name}}</td>
+          <td>{{x.price}}</td>
+          <td>{{x.offprice}}</td> 
+          <td>{{x.details}} </td>
+          <td>{{x.catagory}}</td>
+          <td><img src="{{x.proimage.url}}" style="width: 100px; height: 100px;object-fit: contain;" alt="" > </td>
+          <td><a href="/myadmin/basic_update/?pid={{x.id}}">Edit</a></td>
+          <td><a href="/myadmin/basic_delete/?pid={{x.id}}">Delete</a></td>
+        </tr>
+          {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </div>
+</div>
+
+
+ {% endblock %}
